@@ -1,40 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
-import { Home } from "./pages/Home";
-import { TwoOne } from "./pages/2-1";
-import { TwoTwo } from "./pages/2-2";
+import { config } from "./router/router";
+import { renderRoute, renderMenu } from "./router/utils";
 import "./App.css";
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <Router>
-        <nav className="nav">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/2-1">2-1</Link>
-            </li>
-            <li>
-              <Link to="/2-2">2-2</Link>
-            </li>
-          </ul>
-        </nav>
+        <nav className="nav">{renderMenu(config)}</nav>
         <div className="container">
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/2-1" exact>
-              <TwoOne />
-            </Route>
-            <Route path="/2-2" exact>
-              <TwoTwo />
-            </Route>
-          </Switch>
+          <Switch>{renderRoute(config)}</Switch>
         </div>
       </Router>
     </div>
