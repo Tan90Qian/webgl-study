@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { TwoOne } from "./pages/2-1";
+import { TwoTwo } from "./pages/2-2";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -17,6 +18,9 @@ const App: React.FC = () => {
             <li>
               <Link to="/2-1">2-1</Link>
             </li>
+            <li>
+              <Link to="/2-2">2-2</Link>
+            </li>
           </ul>
         </nav>
         <div className="container">
@@ -26,6 +30,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/2-1" exact>
               <TwoOne />
+            </Route>
+            <Route path="/2-2" exact>
+              <TwoTwo />
             </Route>
           </Switch>
         </div>
