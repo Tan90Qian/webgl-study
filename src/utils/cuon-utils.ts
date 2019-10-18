@@ -1,3 +1,6 @@
-export function getWebGLContext(canvas: HTMLCanvasElement) {
-  return canvas.getContext("webgl");
+export function getWebGLContext(
+  canvas: HTMLCanvasElement,
+  options?: WebGLContextAttributes
+) {
+  return canvas.getContext("webgl", options);
 }

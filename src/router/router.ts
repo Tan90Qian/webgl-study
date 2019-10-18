@@ -1,6 +1,6 @@
 import { Home } from "src/pages/Home";
+import { TwoZero } from "src/pages/chapter2/2-0";
 import { TwoOne } from "src/pages/chapter2/2-1";
-import { TwoTwo } from "src/pages/chapter2/2-2";
 
 export const config = [
   {
@@ -13,14 +13,14 @@ export const config = [
     name: "chapter2",
     children: [
       {
+        path: "2-0",
+        name: "2-0",
+        component: TwoZero
+      },
+      {
         path: "2-1",
         name: "2-1",
         component: TwoOne
-      },
-      {
-        path: "2-2",
-        name: "2-2",
-        component: TwoTwo
       }
     ]
   }

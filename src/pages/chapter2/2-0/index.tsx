@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
+import { useDrawingRectangle } from "./useDrawingRectangle";
 
-import { useHelloCanvas } from "./useHelloCanvas";
-
-export function TwoTwo() {
+export function TwoZero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  useHelloCanvas(canvasRef);
+  useDrawingRectangle(canvasRef);
   return (
     <div>
       <canvas ref={canvasRef} width="400" height="400">
