@@ -10,7 +10,7 @@ export function initShaders(
   vshader: string,
   fshader: string
 ) {
-  var program = createProgram(gl, vshader, fshader);
+  const program = createProgram(gl, vshader, fshader);
   if (!program) {
     console.log("Failed to create program");
     return false;
@@ -28,14 +28,14 @@ function createProgram(
   fshader: string
 ) {
   // Create shader object
-  var vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader);
-  var fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fshader);
+  const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader);
+  const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fshader);
   if (!vertexShader || !fragmentShader) {
     return null;
   }
 
   // Create a program object
-  var program = gl.createProgram();
+  const program = gl.createProgram();
   if (!program) {
     return null;
   }
@@ -48,9 +48,9 @@ function createProgram(
   gl.linkProgram(program);
 
   // Check the result of linking
-  var linked = gl.getProgramParameter(program, gl.LINK_STATUS);
+  const linked = gl.getProgramParameter(program, gl.LINK_STATUS);
   if (!linked) {
-    var error = gl.getProgramInfoLog(program);
+    const error = gl.getProgramInfoLog(program);
     console.log("Failed to link program: " + error);
     gl.deleteProgram(program);
     gl.deleteShader(fragmentShader);
@@ -62,7 +62,7 @@ function createProgram(
 
 function loadShader(gl: WebGLRenderingContext, type: number, source: string) {
   // Create shader object
-  var shader = gl.createShader(type);
+  const shader = gl.createShader(type);
   if (shader == null) {
     console.log("unable to create shader");
     return null;
@@ -75,9 +75,9 @@ function loadShader(gl: WebGLRenderingContext, type: number, source: string) {
   gl.compileShader(shader);
 
   // Check the result of compilation
-  var compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+  const compiled = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
   if (!compiled) {
-    var error = gl.getShaderInfoLog(shader);
+    const error = gl.getShaderInfoLog(shader);
     console.log("Failed to compile shader: " + error);
     gl.deleteShader(shader);
     return null;
