@@ -17,9 +17,9 @@ export function initShaders(
   }
 
   gl.useProgram(program);
-  gl.isProgram(program);
+  gl.useProgram(program);
 
-  return true;
+  return program;
 }
 
 function createProgram(
