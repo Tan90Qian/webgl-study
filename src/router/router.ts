@@ -1,10 +1,13 @@
 import { Home } from "src/pages/Home";
+
 import { TwoZero } from "src/pages/chapter2/2-0";
 import { TwoOne } from "src/pages/chapter2/2-1";
 import { TwoTwo } from "src/pages/chapter2/2-2";
 import { TwoThree } from "src/pages/chapter2/2-3";
 import { TwoFour } from "src/pages/chapter2/2-4";
 import { TwoFive } from "src/pages/chapter2/2-5";
+
+import { ThreeOne } from "src/pages/chapter3/3-1";
 
 export const config = [
   {
@@ -45,6 +48,17 @@ export const config = [
         path: "2-5",
         name: "2-5",
         component: TwoFive
+      }
+    ]
+  },
+  {
+    path: "chapter3",
+    name: "chapter3",
+    children: [
+      {
+        path: "3-1",
+        name: "3-1",
+        component: ThreeOne
       }
     ]
   }
