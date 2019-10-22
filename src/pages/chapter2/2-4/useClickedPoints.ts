@@ -16,8 +16,8 @@ export function useClickedPoints(canvasRef: RefObject<HTMLCanvasElement>) {
       let y = ev.clientY;
       const rect = (ev.target as HTMLCanvasElement).getBoundingClientRect();
 
-      x = (x - rect.left - canvas.height / 2) / (canvas.height / 2);
-      y = (canvas.width / 2 - (y - rect.top)) / (canvas.width / 2);
+      x = (x - rect.left - canvas.width / 2) / (canvas.width / 2);
+      y = (canvas.height / 2 - (y - rect.top)) / (canvas.height / 2);
 
       gPointsRef.current.push(x);
       gPointsRef.current.push(y);
