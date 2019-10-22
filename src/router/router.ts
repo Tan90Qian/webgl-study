@@ -4,6 +4,7 @@ import { TwoOne } from "src/pages/chapter2/2-1";
 import { TwoTwo } from "src/pages/chapter2/2-2";
 import { TwoThree } from "src/pages/chapter2/2-3";
 import { TwoFour } from "src/pages/chapter2/2-4";
+import { TwoFive } from "src/pages/chapter2/2-5";
 
 export const config = [
   {
@@ -39,6 +40,11 @@ export const config = [
         path: "2-4",
         name: "2-4",
         component: TwoFour
+      },
+      {
+        path: "2-5",
+        name: "2-5",
+        component: TwoFive
       }
     ]
   }
