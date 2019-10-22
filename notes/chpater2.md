@@ -35,7 +35,7 @@
 ## 2-3
 
 1. WebGL 程序中，attribute 被称为`存储限定符(storage qualifier)`。
-   - 它表示接下来的变量是一个 attribute 变量。
+   - 它表示接下来的变量是一个 attribute 变量，只有顶点着色器才能使用 attribute 变量。
    - attribute 变量必须声明成全局变量，数据从着色器外部传给该变量。
    - 可以通过`gl.getAttribLocation()`从程序对象(program object)中读取 attribute 变量（的引用）。
    - 可以通过`gl.vertexAttrib1f`等同族函数设置 WebGL 程序中的 attribute 变量的值。
@@ -45,3 +45,9 @@
 1. 对于鼠标事件，鼠标点击的位置是在`浏览器客户区(client area)`中的坐标，而不是在`<canvas>`中的。
 2. `<canvas>`的坐标系统与 WebGL 的坐标系统，其原点位置和 Y 轴正方向都不一样。
 3. WebGL 系统中的绘制操作实际上是在颜色缓冲区中进行绘制的，绘制结束后系统将缓冲区中的内容显示在屏幕上，然后颜色缓冲区就会被重置，其中的内容会丢失。
+
+## 2-5
+
+1. WebGL 程序中，使用片元着色器时需要使用`uniform`变量或者`varying`变量。
+   - uniform 变量用来从 JavaScript 程序向顶点着色器或片元着色器传输`一致的（不变的）`数据。
+2. 可以使用`precison`精度限定词来指定变量的范围（最大值和最小值）和精度。

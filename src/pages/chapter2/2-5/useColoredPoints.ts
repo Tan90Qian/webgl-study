@@ -18,8 +18,7 @@ const FSHADER_SOURCE = `
   }
 `;
 
-
-type POINT = [number, number]
+type POINT = [number, number];
 type RGBA = [number, number, number, number];
 
 export function useColoredPoints(canvasRef: RefObject<HTMLCanvasElement>) {
@@ -57,9 +56,9 @@ export function useColoredPoints(canvasRef: RefObject<HTMLCanvasElement>) {
 
       for (let i = 0; i < len; i += 1) {
         const [x, y] = gPointsRef.current[i];
-        const rgba = gColorsRef.current[i]; 
+        const rgba = gColorsRef.current[i];
         gl.vertexAttrib3f(a_Position, x, y, 0.0);
-        gl.uniform4f(u_FragColor, ...rgba)
+        gl.uniform4f(u_FragColor, ...rgba);
         gl.drawArrays(gl.POINTS, 0, 1);
       }
     },
@@ -88,6 +87,11 @@ export function useColoredPoints(canvasRef: RefObject<HTMLCanvasElement>) {
       program,
       "u_FragColor"
     ) as WebGLUniformLocation;
+
+    if (!u_FragColor) {
+      console.log("Failed to get u_FragColor variable");
+      return;
+    }
 
     canvas.addEventListener("mousedown", ev => {
       click(ev, gl, canvas, a_Position, u_FragColor);
