@@ -8,6 +8,7 @@ import { TwoFour } from "src/pages/chapter2/2-4";
 import { TwoFive } from "src/pages/chapter2/2-5";
 
 import { ThreeOne } from "src/pages/chapter3/3-1";
+import { ThreeTwo } from "src/pages/chapter3/3-2";
 
 export const config = [
   {
@@ -59,6 +60,11 @@ export const config = [
         path: "3-1",
         name: "3-1",
         component: ThreeOne
+      },
+      {
+        path: "3-2",
+        name: "3-2",
+        component: ThreeTwo
       }
     ]
   }
