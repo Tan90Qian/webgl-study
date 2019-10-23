@@ -1,6 +1,7 @@
-import { useEffect, useCallback, RefObject } from "react";
+import { useEffect, RefObject } from "react";
 
 import { getWebGLContext, initShaders } from "src/utils/cuon-utils";
+import { initVertexBuffers } from "../utils";
 
 const VSHADER_SOURCE = `
   attribute vec4 a_Position;
@@ -22,35 +23,6 @@ const FSHADER_SOURCE = `
 const ANGLE = 90;
 
 export function useRotatedTriangle(canvasRef: RefObject<HTMLCanvasElement>) {
-  const initVertexBuffers = useCallback(
-    (gl: WebGLRenderingContext, a_Position: number) => {
-      const vertices = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5]);
-      const n = 3;
-
-      // 创建缓冲区对象
-      const vertexBuffer = gl.createBuffer();
-      if (!vertexBuffer) {
-        console.log("Failed to create the buffer object");
-        return -1;
-      }
-
-      // 将缓冲区对象绑定到目标
-      gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-
-      // 向缓冲区对象中写入数据
-      gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-      // 将缓冲区对象分配给a_Position变量
-      gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
-
-      // 连接a_Position变量与分配给它的缓冲区对象
-      gl.enableVertexAttribArray(a_Position);
-
-      return n;
-    },
-    []
-  );
-
   useEffect(() => {
     const canvas = canvasRef.current as HTMLCanvasElement;
     var gl = getWebGLContext(canvas) as WebGLRenderingContext;
@@ -80,7 +52,7 @@ export function useRotatedTriangle(canvasRef: RefObject<HTMLCanvasElement>) {
       return;
     }
 
-    var radian = Math.PI * ANGLE / 180;
+    var radian = (Math.PI * ANGLE) / 180;
     const cosB = Math.cos(radian);
     const sinB = Math.sin(radian);
 
@@ -94,5 +66,5 @@ export function useRotatedTriangle(canvasRef: RefObject<HTMLCanvasElement>) {
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     gl.drawArrays(gl.TRIANGLES, 0, n);
-  }, [canvasRef, initVertexBuffers]);
+  }, [canvasRef]);
 }
