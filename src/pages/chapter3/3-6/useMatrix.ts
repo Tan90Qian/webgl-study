@@ -3,9 +3,9 @@ import { useEffect, RefObject } from "react";
 import { getWebGLContext, initShaders } from "src/utils/cuon-utils";
 import {
   initVertexBuffers,
-  createTranslateMatrix,
-  createRotateMatrix,
-  createScaleMatrix
+  createTranslateMatrix
+  // createRotateMatrix,
+  // createScaleMatrix
 } from "../utils";
 
 const VSHADER_SOURCE = `
@@ -21,8 +21,6 @@ const FSHADER_SOURCE = `
     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
   }
 `;
-
-const ANGLE = 90;
 
 export function useMatrix(canvasRef: RefObject<HTMLCanvasElement>) {
   useEffect(() => {
