@@ -26,3 +26,34 @@ export const initVertexBuffers = (
 
   return n;
 };
+
+
+export const createTranslateMatrix = (Tx: number, Ty: number, Tz: number) => {
+  return new Float32Array([
+    1.0, 0.0, 0.0, 0.0,
+    0.0, 1.0, 0.0, 0.0,
+    0.0, 0.0, 1.0, 0.0,
+    Tx, Ty, Tz, 1.0
+  ])
+}
+
+export const createRotateMatrix = (angle: number, isRadian: boolean = false) =>{
+  const radian = isRadian ? angle : (Math.PI * angle) / 180;
+  const cosB = Math.cos(radian);
+  const sinB = Math.sin(radian);
+  return new Float32Array([
+    cosB, sinB, 0.0, 0.0,
+    -sinB, cosB, 0.0, 0.0,
+    0.0, 0.0, 1.0, 0.0,
+    0.0, 0.0, 0.0, 1.0
+  ]);
+}
+
+export const createScaleMatrix = (Sx: number, Sy: number, Sz: number) =>{
+  return new Float32Array([
+    Sx, 0.0, 0.0, 0.0,
+    0.0, Sy, 0.0, 0.0,
+    0.0, 0.0, Sz, 0.0,
+    0.0, 0.0, 0.0, 1.0
+  ]);
+}

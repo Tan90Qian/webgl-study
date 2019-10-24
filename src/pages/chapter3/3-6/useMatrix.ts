@@ -1,7 +1,12 @@
 import { useEffect, RefObject } from "react";
 
 import { getWebGLContext, initShaders } from "src/utils/cuon-utils";
-import { initVertexBuffers } from "../utils";
+import {
+  initVertexBuffers,
+  createTranslateMatrix,
+  createRotateMatrix,
+  createScaleMatrix
+} from "../utils";
 
 const VSHADER_SOURCE = `
   attribute vec4 a_Position;
@@ -49,28 +54,9 @@ export function useMatrix(canvasRef: RefObject<HTMLCanvasElement>) {
       return;
     }
 
-    var radian = (Math.PI * ANGLE) / 180;
-    const cosB = Math.cos(radian);
-    const sinB = Math.sin(radian);
-
-    var xformMatrix = new Float32Array([
-      cosB,
-      sinB,
-      0.0,
-      0.0,
-      -sinB,
-      cosB,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      1.0,
-      0.0,
-      0.0,
-      0.0,
-      0.0,
-      1.0
-    ]);
+    const xformMatrix = createTranslateMatrix(0.5, 0.5, 0.0);
+    // const xformMatrix = createRotateMatrix(90);
+    // const xformMatrix = createScaleMatrix(1.0, 1.5, 1.0);
 
     const u_xformMatrix = gl.getUniformLocation(program, "u_xformMatrix");
 
