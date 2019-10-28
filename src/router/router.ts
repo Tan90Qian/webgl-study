@@ -14,6 +14,8 @@ import { ThreeFour } from "src/pages/chapter3/3-4";
 import { ThreeFive } from "src/pages/chapter3/3-5";
 import { ThreeSix } from "src/pages/chapter3/3-6";
 
+import { FourOne } from "src/pages/chapter4/4-1";
+
 export const config = [
   {
     path: "",
@@ -89,6 +91,17 @@ export const config = [
         path: "3-6",
         name: "3-6",
         component: ThreeSix
+      }
+    ]
+  },
+  {
+    path: "chapter4",
+    name: "chapter4",
+    children: [
+      {
+        path: "4-1",
+        name: "4-1",
+        component: FourOne
       }
     ]
   }
