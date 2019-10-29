@@ -323,7 +323,7 @@ export class Matrix4 implements Matrix4Interface {
     var e, rw, rh, rd;
 
     if (left === right || bottom === top || near === far) {
-      throw "null frustum";
+      throw new Error("null frustum");
     }
 
     rw = 1 / (right - left);
@@ -379,13 +379,13 @@ export class Matrix4 implements Matrix4Interface {
     var e, rw, rh, rd;
 
     if (left === right || top === bottom || near === far) {
-      throw "null frustum";
+      throw new Error("null frustum");
     }
     if (near <= 0) {
-      throw "near <= 0";
+      throw new Error("near <= 0");
     }
     if (far <= 0) {
-      throw "far <= 0";
+      throw new Error("far <= 0");
     }
 
     rw = 1 / (right - left);
@@ -434,19 +434,19 @@ export class Matrix4 implements Matrix4Interface {
     var e, rd, s, ct;
 
     if (near === far || aspect === 0) {
-      throw "null frustum";
+      throw new Error("null frustum");
     }
     if (near <= 0) {
-      throw "near <= 0";
+      throw new Error("near <= 0");
     }
     if (far <= 0) {
-      throw "far <= 0";
+      throw new Error("far <= 0");
     }
 
     fovy = (Math.PI * fovy) / 180 / 2;
     s = Math.sin(fovy);
     if (s === 0) {
-      throw "null frustum";
+      throw new Error("null frustum");
     }
 
     rd = 1 / (far - near);
@@ -833,7 +833,7 @@ class Vector3 implements Vector3Interface {
     let g = Math.sqrt(c * c + d * d + e * e);
 
     if (g) {
-      if (g == 1) return this;
+      if (g === 1) return this;
     } else {
       v[0] = 0;
       v[1] = 0;
