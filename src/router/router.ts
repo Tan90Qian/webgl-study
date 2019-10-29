@@ -15,6 +15,7 @@ import { ThreeFive } from "src/pages/chapter3/3-5";
 import { ThreeSix } from "src/pages/chapter3/3-6";
 
 import { FourOne } from "src/pages/chapter4/4-1";
+import { FourTwo } from "src/pages/chapter4/4-2";
 
 export const config = [
   {
@@ -102,6 +103,11 @@ export const config = [
         path: "4-1",
         name: "4-1",
         component: FourOne
+      },
+      {
+        path: "4-2",
+        name: "4-2",
+        component: FourTwo
       }
     ]
   }
